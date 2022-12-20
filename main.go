@@ -27,18 +27,18 @@ func main() {
 	// endregion
 
 	// region string key
-	fmt.Println("Please enter key length.")
-	var key string
-	if ok := scanner.Scan(); ok {
-		key += scanner.Text()
-	}
+	//fmt.Println("Please enter key.")
+	//var key string
+	//if ok := scanner.Scan(); ok {
+	//	key += scanner.Text()
+	//}
 	// endregion
 
 	//r := PolybiusSquare(input)
 	//r := CaesarCipher(input, n)
 	//r := Trithemius(input, key)
 	//r := Vigenere(input)
-	r := VigenereAdvanced(input, key)
-
+	//r := VigenereAdvanced(input, key)
+	r := PolyalphabeticSubstitution(input)
 	fmt.Println(r)
 }
