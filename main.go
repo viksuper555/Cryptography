@@ -39,6 +39,9 @@ func main() {
 	//r := Trithemius(input, key)
 	//r := Vigenere(input)
 	//r := VigenereAdvanced(input, key)
-	r := PolyalphabeticSubstitution(input)
-	fmt.Println(r)
+	r := PolyalphabeticSubstitutionDecrypt(input)
+	fmt.Println("Decrypted: %s", r)
+	c := PolyalphabeticSubstitution(r)
+	fmt.Println("Encrypted: %s", c)
+
 }

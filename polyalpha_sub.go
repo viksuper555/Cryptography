@@ -27,12 +27,35 @@ func PolyalphabeticSubstitution(text string) string {
 			letNum = 1
 		}
 		result += let[letNum-1]
-		fmt.Printf("Letter '%c' +  Book '%s' = C '%s' \n", c, string(book[i/2]), result)
+		fmt.Printf("Letter '%c' +  Book '%s' = C '%s' \n", c, string(book[i/2]), let[letNum-1])
 	}
 
 	return result
 }
 
+func PolyalphabeticSubstitutionDecrypt(text string) string {
+	let, letMap := GenerateAlphabet()
+	book := ReadBook(PATH)
+	var result string
+	for i, c := range strings.ToUpper(text) {
+		wordLetNum := letMap[string(c)]
+		bookLetNum := letMap[string(book[i/2])]
+
+		letNum := (wordLetNum - bookLetNum) % ALPHABET_SIZE
+		if letNum == 0 {
+			letNum = 30
+		}
+		if letNum < 0 {
+			letNum = 30 - (letNum * -1)
+		}
+		result += let[letNum-1]
+		fmt.Printf("Letter '%c' +  Book '%s' = C '%s' \n", c, string(book[i/2]), let[letNum-1])
+	}
+
+	return result
+}
+
+// ЗДРАВЕЙТЕ
 func ReadBook(path string) []uint16 {
 	content, err := os.ReadFile(PATH)
 	if err != nil {
